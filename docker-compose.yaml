@@ -10,6 +10,7 @@ services:
       - vtnet
     environment:
       LMCACHE_CONFIG_FILE: /opt/etc/lmcache_config.yaml
+      LMCACHE_USE_EXPERIMENTAL: "True"
       CUDA_VISIBLE_DEVICES: "0"
     ports:
       - 8001:8000
@@ -22,6 +23,7 @@ services:
       - ./etc/:/opt/etc
     environment:
       LMCACHE_CONFIG_FILE: /opt/etc/lmcache_config.yaml
+      LMCACHE_USE_EXPERIMENTAL: "True"
       CUDA_VISIBLE_DEVICES: "1"
     networks:
       - vtnet
@@ -30,6 +32,8 @@ services:
   lmcache:
     image: nguyenkhacthanh/lmcache:latest
     platform: linux/amd64
+    environment:
+      LMCACHE_USE_EXPERIMENTAL: "True"
     command:
       - /opt/venv/bin/lmcache_server 0.0.0.0 65432
     networks:
