@@ -1,0 +1,39 @@
+services:
+  vllm-1:
+    image: nguyenkhacthanh/lmcache:latest
+    platform: linux/amd64
+    command:
+      - /opt/etc/start
+    volumes:
+      - ./etc/:/opt/etc
+    networks:
+      - vtnet
+    environment:
+      LMCACHE_CONFIG_FILE: /opt/etc/lmcache_config.yaml
+      CUDA_VISIBLE_DEVICES: "0"
+    ports:
+      - 8001:8000
+  vllm-2:
+    image: nguyenkhacthanh/lmcache:latest
+    platform: linux/amd64
+    command:
+      - /opt/etc/start
+    volumes:
+      - ./etc/:/opt/etc
+    environment:
+      LMCACHE_CONFIG_FILE: /opt/etc/lmcache_config.yaml
+      CUDA_VISIBLE_DEVICES: "0"
+    networks:
+      - vtnet
+    ports:
+      - 8002:8000
+  lmcache:
+    image: nguyenkhacthanh/lmcache:latest
+    platform: linux/amd64
+    command:
+      - /opt/venv/bin/lmcache_server 0.0.0.0 65432
+    networks:
+      - vtnet
+
+networks:
+  vtnet:
