@@ -1,6 +1,6 @@
 services:
   vllm-1:
-    image: lmcache/vllm-openai:v0.3.0
+    image: lmcache/vllm-openai:v0.3.9
     platform: linux/amd64
     entrypoint:
       - /bin/sh
@@ -17,7 +17,7 @@ services:
     ports:
       - 8001:8000
   vllm-2:
-    image: lmcache/vllm-openai:v0.3.0
+    image: lmcache/vllm-openai:v0.3.9
     platform: linux/amd64
     entrypoint:
       - /bin/sh
@@ -34,10 +34,11 @@ services:
     ports:
       - 8002:8000
   lmcache:
-    image: lmcache/vllm-openai:v0.3.0
+    image: lmcache/vllm-openai:v0.3.9
     platform: linux/amd64
-    environment:
-      LMCACHE_USE_EXPERIMENTAL: "True"
+    entrypoint:
+      - /bin/sh
+      - -c
     command:
       - /opt/venv/bin/lmcache_server 0.0.0.0 65432
     networks:
