@@ -1,10 +1,7 @@
 services:
   vllm-1:
-    image: lmcache/vllm-openai:v0.3.9
+    image: nguyenkhacthanh/lmcache:v0.3.9
     platform: linux/amd64
-    entrypoint:
-      - /bin/sh
-      - -c
     command:
       - /opt/etc/start
     volumes:
@@ -17,11 +14,8 @@ services:
     ports:
       - 8001:8000
   vllm-2:
-    image: lmcache/vllm-openai:v0.3.9
+    image: nguyenkhacthanh/lmcache:v0.3.9
     platform: linux/amd64
-    entrypoint:
-      - /bin/sh
-      - -c
     command:
       - /opt/etc/start
     volumes:
@@ -34,11 +28,8 @@ services:
     ports:
       - 8002:8000
   lmcache:
-    image: lmcache/vllm-openai:v0.3.9
+    image: nguyenkhacthanh/lmcache:v0.3.9
     platform: linux/amd64
-    entrypoint:
-      - /bin/sh
-      - -c
     command:
       - /opt/venv/bin/lmcache_server 0.0.0.0 65432
     networks:

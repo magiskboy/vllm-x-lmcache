@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /opt/venv/bin/activate
+. /opt/venv/bin/activate
 
 vllm serve Qwen/Qwen2.5-Coder-3B-Instruct \
     --host 0.0.0.0 \
