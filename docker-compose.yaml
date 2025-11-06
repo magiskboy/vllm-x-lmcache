@@ -22,7 +22,7 @@ services:
       - ./etc/:/opt/etc
     environment:
       LMCACHE_CONFIG_FILE: /opt/etc/lmcache_config.yaml
-      CUDA_VISIBLE_DEVICES: "0"
+      CUDA_VISIBLE_DEVICES: "1"
     networks:
       - vtnet
     ports:
