@@ -1,5 +1,3 @@
-FROM lmcache/vllm-openai:nightly-2025-11-05
-
-RUN ls
+FROM lmcache/vllm-openai:v0.3.0
 
 ENTRYPOINT ["/bin/sh", "-c"]
